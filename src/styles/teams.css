@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Rambla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+#teamContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+#teamActionBar {
+    width: 80%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#teamEditText {
+    min-width: 60%;
+    font-family: "Rambla", sans-serif;
+    font-size: 1.4em;
+}
+
+#scrollDiv {
+    margin-top: 1em;
+    min-width: 60%;
+}
+
+.btnStyle {
+    font-family: "Rambla", sans-serif;
+    font-size: 1.4em;
+    padding: 0.3em;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 0.3em;
+    border-style: solid;
+    border-width: 0;
+}
+
+.headingLabel {
+    font-family: "Rambla", sans-serif;
+    color: var(--accent);
+    font-size: 3em;
+    margin: 0.3em;
+}
+
+.teamBox {
+    font-family: "Rambla", sans-serif;
+    min-width: 60%;
+    font-size: 1.6em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.teamLabel {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}

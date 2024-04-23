@@ -1,0 +1,41 @@
+@import url('./general.css');
+@import url('https://fonts.googleapis.com/css2?family=Rambla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+#matchBox {
+    background-color: var(--accent);
+    color: white;
+    display: grid;
+    width: fit-content;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    font-family: "Rambla", sans-serif;
+
+    text-align: center;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 0.3em;
+    border-radius: 0.4em;
+}
+
+.matchContent {
+    background-color: var(--darkAccent);
+    color: white;
+    font-size: 1.3em;
+    border: none;
+
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    border-radius: 0.3em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+.matchContent:active {
+    background-color: var(--selectAccent);
+}
+
+#wonLabel {
+    border-color: white;
+    border-width: 0.1em;
+    border-style: solid;
+}
