@@ -39,3 +39,23 @@
     border-width: 0.1em;
     border-style: solid;
 }
+
+#byeBox {
+    background-color: var(--accent);
+    color: white;
+    width: fit-content;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    font-family: "Rambla", sans-serif;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.3em;
+}
+
+#byeLabel {
+    padding-left: 2.3em;
+    padding-right: 2.3em;
+    margin-right: 0.3em;
+}

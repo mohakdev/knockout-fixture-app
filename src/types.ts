@@ -8,5 +8,14 @@ export type match = {
     teamsPlaying: team[];
     winner: team;
     loser: team;
-    nextMatchNo: number;
+    nextMatchNo: number | null;
 };
+export type fixtureInfo = {
+    numOfMatches: number,
+    numOfRounds: number,
+    numOfByes: number,
+    numOfUH: number,
+    numOfLH: number,
+    numOfByesInUH: number,
+    numOfByesInLH: number,
+} 

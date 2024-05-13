@@ -16,7 +16,6 @@ function Teams (props : teamsProps) {
     }
     const addTeam = () => {
         let newTeamArr = props.totalTeams.concat({teamName : teamName,teamNo : teamNo});
-        console.log("Total Teams : " + newTeamArr);
         props.setTotalTeams(newTeamArr);
         setTeamNo(teamNo + 1);
     }

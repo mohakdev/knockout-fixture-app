@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { team } from './types';
 import './App.css'
 import Teams from './Teams'
 import Fixture from './Fixture';
 
 function App() {
   const [openFixture,setOpenFixture] = useState(false);
-  const [totalTeams,setTotalTeams] = useState([]);
+  const [totalTeams,setTotalTeams] = useState<team[]>([]);
 
   if(openFixture)
   {
     return (
-      <Fixture/>
+      <Fixture totalTeams = {totalTeams}/>
     )
   }
   else 

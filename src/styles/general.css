@@ -6,3 +6,22 @@
     --darkAccent: #146C68;
     --selectAccent: #053b39;
 }
+
+#root {
+    height: 95vh;
+    overflow-y: hidden;
+}
+
+#fixtureTable {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.fixtureRound {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
