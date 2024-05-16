@@ -10,35 +10,33 @@ function calRounds(N : number) {
     }
     return 0;
 }
-function calByes(N : number) {
-    return 2**calRounds(N) - N;
+function calByes(N : number) : number[] {
+    const noOfByes = 2**calRounds(N) - N;
+    let byesPosition : number[] = new Array(noOfByes);
+    return byesPosition;
 }
-function calHalves(N : number, supplement : number) {
-    if(N%2 == 0) {
+function calRoundOneMatches(N: number): number {
+    const noOfByes = 2**calRounds(N) - N;
+    return noOfByes + ((N - noOfByes) / 2);
+}
+
+function calUH(N : number) : number {
+    if(N%2==0) {
         return N/2;
     }
     else {
-        return (N+supplement)/2;
-    }
-}
-function calByesinHalves(N : number, supplement : number) {
-    if(calByes(N)%2 == 0) {
-        return N/2;
-    }
-    else {
-        return (calByes(N)+supplement)/2;
+        return (N+1)/2;
     }
 }
 
 function calFixtureInfo(totalTeams : team[]) : fixtureInfo {
     return {
-        numOfMatches : totalTeams.length,
+        numOfMatches : totalTeams.length - 1,
         numOfRounds : calRounds(totalTeams.length),
-        numOfByes : calByes(totalTeams.length),
-        numOfUH : calHalves(totalTeams.length,1),
-        numOfLH: calHalves(totalTeams.length,-1),
-        numOfByesInUH : calByesinHalves(totalTeams.length,-1),
-        numOfByesInLH : calByesinHalves(totalTeams.length,+1),
+        numOfUH : calUH(totalTeams.length),
+        numOfMatchesRoundOne : calRoundOneMatches(totalTeams.length),
+        byes : calByes(totalTeams.length),
     };
 }
 export default calFixtureInfo;
+
