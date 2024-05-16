@@ -51,7 +51,6 @@ function GenerateSubsequentRounds(prevRound : round,roundNumber : number) : roun
   })
   
   let teamsIndex = 0;
-  console.log("Winner's Array = ",winners);
   for(let j = 0; j < round.matches.length; j++) 
   {
     round.matches[j] = {
