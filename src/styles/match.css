@@ -40,22 +40,37 @@
     border-style: solid;
 }
 
+#byeLabel {
+    border-color: white;
+    border-width: 0.1em;
+    border-style: solid;
+}
+
 #byeBox {
     background-color: var(--accent);
     color: white;
+    display: grid;
     width: fit-content;
     padding-left: 0.4em;
     padding-right: 0.4em;
     font-family: "Rambla", sans-serif;
-    text-align: center;
 
-    display: flex;
-    flex-direction: row;
-    border-radius: 0.3em;
+    text-align: center;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0.3em;
+    border-radius: 0.4em;
 }
 
-.byeLabel {
-    padding-left: 2.3em;
-    padding-right: 2.3em;
-    margin-right: 0.3em;
+.byeContent {
+    background-color: var(--darkAccent);
+    color: white;
+    font-size: 1.3em;
+    border: none;
+
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    border-radius: 0.3em;
+    padding-left: 0.53em;
+    padding-right: 0.53em;
 }

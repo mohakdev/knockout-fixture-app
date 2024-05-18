@@ -11,7 +11,8 @@ function Match(props : matchProps)
   {
     return (
       <div id='byeBox'>
-        <button onClick={(e) => console.log(e.currentTarget)} className='byeLabel'>{props.match.teamsPlaying[0].teamName}</button>
+        <button onClick={(e) => console.log(e.currentTarget)} className='byeContent'>{props.match.teamsPlaying[0].teamName}</button>
+        <h4 id = 'byeLabel' className='byeContent'>BYE</h4>
       </div>
     )
   }

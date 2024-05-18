@@ -22,7 +22,7 @@ function Fixture(props : fixtureProps) {
             <Match key={match.matchNo} match={match}/>
           ))}
         </div>
-      ))} 
+      ))}
     </div>
   )
 }
@@ -72,16 +72,20 @@ function GenerateFirstRound(teams : team[], fixtureStats: fixtureInfo) : round {
   let roundOne : round = {roundNo : 0, matches : new Array(fixtureStats.numOfMatchesRoundOne)};
   for(let j =0; j < roundOne.matches.length; j++) 
   {
+    let teamsInMatch : team[] = [];
+    if(teams[teamsIndex].isBye) { teamsInMatch = [teams[teamsIndex]]; }
+    else {teamsInMatch = [teams[teamsIndex],teams[teamsIndex + 1]]}
     roundOne.matches[j] = {
       matchNo : matchNumber, 
       roundNo : roundOne.roundNo, 
-      isBye: false,
-      teamsPlaying : [teams[teamsIndex],teams[teamsIndex + 1]],
+      isBye: teams[teamsIndex].isBye,
+      teamsPlaying : teamsInMatch,
       winner : teams[teamsIndex],
       loser : teams[teamsIndex + 1],
       nextMatchNo : null,
     }
-    teamsIndex += 2;
+    if(teams[teamsIndex].isBye) { teamsIndex++; }
+    else {teamsIndex += 2;}
     matchNumber++;
   }
   return roundOne;

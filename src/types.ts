@@ -1,6 +1,7 @@
 export type team = {
     teamNo: number; //Unique for every team
     teamName: string;
+    isBye: boolean;
 };
 export type match = {
     matchNo: number; //Unique for every match
@@ -18,9 +19,5 @@ export type round = {
 export type fixtureInfo = {
     numOfMatches: number,
     numOfRounds: number,
-    numOfUH: number,
     numOfMatchesRoundOne: number,
-    byes: number[],
-    //This is an array which contains byes position for eg, [1,4,5]
-    //represents byes are placed at 1, 4, 5
 } 
