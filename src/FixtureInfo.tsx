@@ -31,27 +31,30 @@ function calByesBoolean(totalTeams : team[]) {
 function calByesPosition(N : number) : number[] {
     let byesPosition : number[] = new Array(calByes(N));
     let byesCount = 0;
+    let cycle = 0;
+
     for(let j = 0; j < byesPosition.length; j++)
     {
         //Bye Order: BB - TT - BT - TB
         if(byesCount == 0) {
-            byesPosition[j] = N - 1;
+            byesPosition[j] = N - 1 - cycle;
         }
         else if (byesCount == 1)
         {
-            byesPosition[j] = 0;   
+            byesPosition[j] = 0 + cycle;   
         }
         else if (byesCount == 2)
         {
-            byesPosition[j] = calUH(N);
+            byesPosition[j] = calUH(N) + cycle;
         }
         else if (byesCount == 3)
         {
-            byesPosition[j] = calUH(N) - 1;
+            byesPosition[j] = calUH(N) - 1 - cycle;
         }
         byesCount++;
-        if(byesCount > 4) { byesCount = 0; }
+        if(byesCount >= 4) { byesCount = 0; cycle++; }
     }
+    console.log(byesPosition);
     return byesPosition;
 }
 function calUH(N : number) : number {
