@@ -5,12 +5,12 @@ export type team = {
 };
 export type match = {
     matchNo: number; //Unique for every match
+    matchId: string; //Used to attach Arrows
     roundNo: number;
     isBye: boolean;
     teamsPlaying: team[];
     winner: team;
     loser: team;
-    nextMatchNo: number | null;
 };
 export type round = {
     roundNo: number;
@@ -20,4 +20,4 @@ export type fixtureInfo = {
     numOfMatches: number,
     numOfRounds: number,
     numOfMatchesRoundOne: number,
-} 
+};

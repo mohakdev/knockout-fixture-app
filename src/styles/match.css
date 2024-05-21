@@ -1,7 +1,7 @@
 @import url('./general.css');
 @import url('https://fonts.googleapis.com/css2?family=Rambla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-#matchBox {
+.matchBox {
     background-color: var(--accent);
     color: white;
     display: grid;
@@ -46,7 +46,7 @@
     border-style: solid;
 }
 
-#byeBox {
+.byeBox {
     background-color: var(--accent);
     color: white;
     display: grid;

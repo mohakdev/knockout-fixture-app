@@ -1,25 +1,30 @@
-import React, { ReactNode } from 'react'
+import React, { LegacyRef, ReactNode, useRef } from 'react'
 import Xarrow from "react-xarrows";
 import './App.css';
 import './styles/general.css'
 import { fixtureInfo, match, round, team } from './types';
 import Match from './components/Match';
 import calFixtureInfo from './FixtureInfo';
+import Arrows from './components/Arrows';
 
 interface fixtureProps {
   totalTeams : team[]
 }
 
+
 function Fixture(props : fixtureProps) {
   const fixtureStats : fixtureInfo = calFixtureInfo(props.totalTeams);
   let rounds : round[] = GenerateRounds(props.totalTeams,fixtureStats);
   console.log("Rounds Array = ",rounds);
-  return (
+  return (  
     <div id='fixtureTable'>
       {rounds.map((round) => (
         <div key={round.roundNo} className='fixtureRound'>
           {round.matches.map((match) => (
-            <Match key={match.matchNo} match={match}/>
+            <div key={match.matchId}>
+              <Match key={match.matchNo} match={match}/>
+              <Arrows key={match.matchId} currentMatch={match}/>
+            </div>
           ))}
         </div>
       ))}
@@ -55,14 +60,15 @@ function GenerateSubsequentRounds(prevRound : round,roundNumber : number) : roun
   {
     round.matches[j] = {
       matchNo : matchNumber,
+      matchId : "match-" + matchNumber,
       roundNo : roundNumber,
       isBye : false,
       teamsPlaying : [winners[teamsIndex],winners[teamsIndex+1]],
       winner: winners[teamsIndex],
       loser : winners[teamsIndex + 1],
-      nextMatchNo : null,
     }
     teamsIndex += 2;
+    matchNumber++;
   }
   return round;
 }
@@ -77,12 +83,12 @@ function GenerateFirstRound(teams : team[], fixtureStats: fixtureInfo) : round {
     else {teamsInMatch = [teams[teamsIndex],teams[teamsIndex + 1]]}
     roundOne.matches[j] = {
       matchNo : matchNumber, 
+      matchId : "match-" + matchNumber,
       roundNo : roundOne.roundNo, 
       isBye: teams[teamsIndex].isBye,
       teamsPlaying : teamsInMatch,
-      winner : teams[teamsIndex],
-      loser : teams[teamsIndex + 1],
-      nextMatchNo : null,
+      winner : teamsInMatch[0],
+      loser : teamsInMatch[1],
     }
     if(teams[teamsIndex].isBye) { teamsIndex++; }
     else {teamsIndex += 2;}

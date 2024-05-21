@@ -54,7 +54,6 @@ function calByesPosition(N : number) : number[] {
         byesCount++;
         if(byesCount >= 4) { byesCount = 0; cycle++; }
     }
-    console.log(byesPosition);
     return byesPosition;
 }
 function calUH(N : number) : number {
