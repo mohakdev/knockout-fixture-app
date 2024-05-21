@@ -15,7 +15,7 @@ function Teams (props : teamsProps) {
         props.setOpenFixture(true);
     }
     const addTeam = () => {
-        let newTeamArr = props.totalTeams.concat({teamName : teamName,teamNo : teamNo});
+        let newTeamArr = props.totalTeams.concat({teamName : teamName,teamNo : teamNo, isBye : false});
         props.setTotalTeams(newTeamArr);
         setTeamNo(teamNo + 1);
     }

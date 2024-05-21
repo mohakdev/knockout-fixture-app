@@ -37,6 +37,10 @@
     border-width: 0;
 }
 
+.btnStyle:active {
+    background-color: var(--darkAccent);
+}
+
 .headingLabel {
     font-family: "Rambla", sans-serif;
     color: var(--accent);
