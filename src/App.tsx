@@ -7,19 +7,20 @@ import Fixture from './Fixture';
 function App() {
   const [openFixture,setOpenFixture] = useState(false);
   const [totalTeams,setTotalTeams] = useState<team[]>([]);
-
+  const [blankFixture,setBlankFixture] = useState(false);
+  
   if(openFixture)
   {
     return (
-      <Fixture totalTeams = {totalTeams}/>
+      <Fixture totalTeams = {totalTeams} isBlankFixture = {blankFixture}/>
     )
   }
   else 
   {
     return (
-      <Teams setOpenFixture={setOpenFixture} totalTeams={totalTeams} setTotalTeams={setTotalTeams}/>
+      <Teams setOpenFixture={setOpenFixture} setBlankFixture={setBlankFixture} totalTeams={totalTeams} setTotalTeams={setTotalTeams}/>
     )
   }
 }
 
-export default App
+export default App;

@@ -1,13 +1,13 @@
-import { match } from '../types';
+import { match, team } from '../types';
 import "../styles/match.css";
-import { LegacyRef } from 'react';
-
 interface matchProps {
   match : match,
+  isBlankFixture : boolean,
 }
 
 function Match(props : matchProps) 
 {
+  
   if(props.match.roundNo == 0 && props.match.isBye == true) //Bye Teams
   {
     return (
@@ -19,6 +19,16 @@ function Match(props : matchProps)
   }
   else //Normal Match
   {
+    if(props.isBlankFixture && props.match.roundNo > 0)
+    {
+      return (
+        <div id={props.match.matchId} className='matchBox'>
+          <button onClick={(e) => console.log(e.currentTarget)} id = 'firstTeam' className='matchContent'>         </button>
+          <h4 id = 'wonLabel' className='matchContent'>Won</h4>
+          <button onClick={(e) => console.log(e.currentTarget)} id = 'secondTeam' className='matchContent'>        </button>
+        </div>
+      )
+    }
     return (
       <div id={props.match.matchId} className='matchBox'>
           <button onClick={(e) => console.log(e.currentTarget)} id = 'firstTeam' className='matchContent'>{props.match.winner.teamName}</button>

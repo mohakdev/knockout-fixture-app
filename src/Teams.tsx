@@ -1,14 +1,16 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import { team } from './types';
 import './styles/teams.css';
 
 interface teamsProps {
     setOpenFixture : React.Dispatch<React.SetStateAction<boolean>>,
+    setBlankFixture : React.Dispatch<React.SetStateAction<boolean>>,
+    setTotalTeams : React.Dispatch<React.SetStateAction<team[]>>,
     totalTeams : team[],
-    setTotalTeams : React.Dispatch<React.SetStateAction<team[]>>
 }
 
 function Teams (props : teamsProps) {
+
     const [teamName,setTeamName] = useState('');
     const [teamNo, setTeamNo] = useState(1);
     const startFixure = () => {
@@ -19,12 +21,23 @@ function Teams (props : teamsProps) {
         props.setTotalTeams(newTeamArr);
         setTeamNo(teamNo + 1);
     }
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            // Enter key pressed
+            addTeam();
+            setTeamName('');
+        } 
+        else {
+            setTeamName(event.currentTarget.value);
+        }
+    }
     return (
         <div id='teamContainer'>
             <h1 className='headingLabel'>Knockout Fixture</h1>
             <div id='teamActionBar'>
-                <input id='teamEditText' onChange={(e) => setTeamName(e.target.value)} placeholder='Enter Name...' type='text' value={teamName}/>
+                <input id='teamEditText' onChange={(e) => setTeamName(e.target.value)} onKeyDown={handleKeyDown} placeholder='Enter Name...' type='text' value={teamName}/>
                 <button className='btnStyle' onClick={addTeam}>Create Team</button>
+                <button className='btnStyle' onClick={() => props.setBlankFixture(true)}>Blank</button>
                 <button className='btnStyle' onClick={startFixure}>SUBMIT</button>
             </div>
             <div id='scrollDiv'>

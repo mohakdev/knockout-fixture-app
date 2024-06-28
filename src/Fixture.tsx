@@ -1,20 +1,20 @@
-import React, { LegacyRef, ReactNode, useRef } from 'react'
-import Xarrow from "react-xarrows";
 import './App.css';
 import './styles/general.css'
-import { fixtureInfo, match, round, team } from './types';
+import { fixtureInfo, round, team } from './types';
 import Match from './components/Match';
 import calFixtureInfo from './FixtureInfo';
 import Arrows from './components/Arrows';
 
 interface fixtureProps {
-  totalTeams : team[]
+  totalTeams : team[],
+  isBlankFixture : boolean
 }
 
-
 function Fixture(props : fixtureProps) {
+
   const fixtureStats : fixtureInfo = calFixtureInfo(props.totalTeams);
   let rounds : round[] = GenerateRounds(props.totalTeams,fixtureStats);
+  
   console.log("Rounds Array = ",rounds);
   return (  
     <div id='fixtureTable'>
@@ -22,7 +22,7 @@ function Fixture(props : fixtureProps) {
         <div key={round.roundNo} className='fixtureRound'>
           {round.matches.map((match) => (
             <div key={match.matchId}>
-              <Match key={match.matchNo} match={match}/>
+              <Match key={match.matchNo} match={match} isBlankFixture={props.isBlankFixture}/>
               <Arrows key={match.matchId} currentMatch={match}/>
             </div>
           ))}
@@ -31,8 +31,10 @@ function Fixture(props : fixtureProps) {
     </div>
   )
 }
+
 let matchNumber = 0;
 let roundNumber = 0;
+
 function GenerateRounds(teams : team[], fixtureStats: fixtureInfo) : round[] {
   let totalRounds : round[] = new Array(fixtureStats.numOfRounds);
   // Step 1: Generate first round seperately and make sure to set up byes as well
@@ -96,6 +98,7 @@ function GenerateFirstRound(teams : team[], fixtureStats: fixtureInfo) : round {
   }
   return roundOne;
 }
+
 
 export default Fixture;
 
