@@ -9,7 +9,6 @@
 
 #root {
     height: 95vh;
-    overflow-y: hidden;
 }
 
 #fixtureTable {
@@ -18,10 +17,30 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: space-around;
+    overflow: hidden;
 }
 
 .fixtureRound {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+
+#fixtureInfo {
+    position: absolute;
+    left: 60%;
+    width: 40%;
+    margin-right: 0;
+}
+
+#categoryLabel {
+    margin: 0;
+}
+
+#tournamentName {
+    font-family: "Rambla", sans-serif;
+    color: var(--accent);
+    font-size: 3em;
+    margin: 0;
 }

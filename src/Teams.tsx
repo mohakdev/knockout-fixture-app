@@ -6,14 +6,18 @@ interface teamsProps {
     setOpenFixture : React.Dispatch<React.SetStateAction<boolean>>,
     setBlankFixture : React.Dispatch<React.SetStateAction<boolean>>,
     setTotalTeams : React.Dispatch<React.SetStateAction<team[]>>,
+    handleTournamentInfo : (tournament:string,category:string) => void,
     totalTeams : team[],
 }
 
 function Teams (props : teamsProps) {
 
     const [teamName,setTeamName] = useState('');
+    const [tournamentName,setTournamentName] = useState('');
+    const [categoryName,setCategoryName] = useState('');
     const [teamNo, setTeamNo] = useState(1);
     const startFixure = () => {
+        props.handleTournamentInfo(tournamentName,categoryName);
         props.setOpenFixture(true);
     }
     const addTeam = () => {
@@ -34,8 +38,12 @@ function Teams (props : teamsProps) {
     return (
         <div id='teamContainer'>
             <h1 className='headingLabel'>Knockout Fixture</h1>
+            <div id='fixtureInfoBar'>
+                <input className='editText tournamentField' onChange={(e) => setTournamentName(e.target.value)} placeholder='Tournament Name...' type='text' value={tournamentName}/>
+                <input className='editText' onChange={(e) => setCategoryName(e.target.value)} placeholder='Category Name...' type='text' value={categoryName}/>
+            </div>
             <div id='teamActionBar'>
-                <input id='teamEditText' onChange={(e) => setTeamName(e.target.value)} onKeyDown={handleKeyDown} placeholder='Enter Name...' type='text' value={teamName}/>
+                <input className='editText' onChange={(e) => setTeamName(e.target.value)} onKeyDown={handleKeyDown} placeholder='Enter Name...' type='text' value={teamName}/>
                 <button className='btnStyle' onClick={addTeam}>Create Team</button>
                 <button className='btnStyle' onClick={() => props.setBlankFixture(true)}>Blank</button>
                 <button className='btnStyle' onClick={startFixure}>SUBMIT</button>
